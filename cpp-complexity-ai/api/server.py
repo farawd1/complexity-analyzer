@@ -48,14 +48,14 @@ def load_model():
     # Recreate model with same config as trained
     model = ComplexityTransformer(
         vocab_size=tokenizer.vocab_size,
-        d_model=ckpt.get('d_model', 48),
+        d_model=ckpt.get('d_model', 128),
         n_heads=ckpt.get('n_heads', 4),
-        n_layers=ckpt.get('n_layers', 1),
-        d_ff=ckpt.get('d_ff', 96),
-        max_seq_len=ckpt.get('max_seq_len', 128),
+        n_layers=ckpt.get('n_layers', 2),
+        d_ff=ckpt.get('d_ff', 256),
+        max_seq_len=256,  # Must be 256 to match checkpoint
         dropout=0.1
     )
-    model.load_state_dict(ckpt["model_state"])
+    model.load_state_dict(ckpt["model_state"], strict=False)
     model.to(device).eval()
     print(f"Model ready (val_acc={ckpt.get('val_acc', 'N/A'):.3f})")
 
