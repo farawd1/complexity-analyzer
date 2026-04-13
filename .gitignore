@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+*.npy
+*.pt
+logs/*.json
+logs/*.npy
+checkpoints/*.pt
+checkpoints/*.json
+.DS_Store
